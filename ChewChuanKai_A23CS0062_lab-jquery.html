@@ -62,42 +62,92 @@ $(document).ready(function(){
 
     // Task 1:
     // Change the title text
+    $('#mainTitle').text('Updated Student Task Manager');
 
     // Task 2:
     // Change text color of info paragraphs
+    $('.info').css('color', 'blue');
 
     // Task 3:
     // Display list items in console
+    $('#taskList li').each(function() {
+        console.log($(this).text());
+    });
 
     // Task 4:
     // Append new paragraph
+    $('.box').append('<p>New paragraph added to the box.</p>');
 
     // Task 5:
     // Add task when button clicked
+    $('#addTaskBtn').click(function() {
+        const taskText = $('#taskInput').val().trim();
+
+        if (taskText === '') {
+            alert('Please enter a task before adding.');
+            return;
+        }
+
+        $('#taskList').append('<li class="task-item">' + taskText + '</li>');
+        $('#taskInput').val('');
+    });
 
     // Task 6:
     // Remove last task
+    $('#removeTaskBtn').click(function() {
+        $('#taskList li:last').remove();
+    });
 
     // Task 7:
     // Change parent background color
+    $('#message').parent().css('background-color', 'lightyellow');
 
     // Task 8:
     // Display children tag names
+    $('.box').children().each(function() {
+        console.log($(this).prop('tagName'));
+    });
 
     // Task 9:
     // Make next sibling bold
+    $('#taskList li:first').next().css('font-weight', 'bold');
 
     // Task 10:
     // Display input text while typing
+    $('#taskInput').on('input', function() {
+        $('#message').text($(this).val());
+    });
+
 
     // Task 11:
     // Change border on mouse enter and leave
+    $('.box').hover(
+        function() {
+            $(this).css('border-color', 'tomato');
+        },
+        function() {
+            $(this).css('border-color', 'black');
+        }
+    );
+
+    let clickTimer;
 
     // Task 12:
     // Show alert when task clicked
+    $('#taskList').on('click', '.task-item', function() {
+        const $item = $(this);
+
+        clickTimer = setTimeout(function() {
+            alert('Task clicked: ' + $item.text().trim());
+        }, 250);
+    });
 
     // Task 13:
     // Integration task
+    $('#taskList').on('dblclick', '.task-item', function() {
+        clearTimeout(clickTimer);
+        $(this).remove();
+    });
 
 });
 
