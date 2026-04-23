@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX Exercise 3</title>
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- 1. Using $.ajax() for GET Request -->
+    <!-- <script>
+        $.ajax({
+            url: "https://jsonplaceholder.typicode.com/todos/1",
+            method: "GET",
+            success: function (data) {
+                console.log("AJAX GET:", data);
+                document.getElementById("ajaxOutput").textContent = JSON.stringify(data, null, 2);
+            },
+            error: function (error) {
+                console.error("AJAX Error:", error);
+            }
+        });
+    </script>
+    <pre id="ajaxOutput">Loading AJAX data...</pre> -->
+
+    <!-- Using $.get() -->
+    <!-- <script>
+        $.get("https://jsonplaceholder.typicode.com/todos/1",
+            function(data) {
+                console.log("jQuery GET:", data);
+                document.getElementById("getOutput").textContent = JSON.stringify(data, null, 2);
+            }
+        );
+        </script>
+    <pre id="getOutput">Loading GET data...</pre> -->
+
+    <!-- 3. Using $.getJSON() -->
+    <!-- <script>
+        $.getJSON("https://jsonplaceholder.typicode.com/todos/1",
+            function(data) {
+                console.log("jQuery getJSON:", data);
+                document.getElementById("jsonOutput").textContent = JSON.stringify(data, null, 2);
+            }
+        );
+    </script>
+    <pre id="jsonOutput">Loading JSON data...</pre> -->
+
+    <!-- 4. Simulating a POST Request -->
+    <script>
+        $.ajax({
+            url: "https://jsonplaceholder.typicode.com/posts",
+            method: "POST",
+            data: JSON.stringify({
+                title: "Greetings Everyone",
+                body: "This is a Web Technology Lab Exercise 4",
+                userId: 2
+            }),
+            contentType: "application/json; charset=UTF-8",
+            success: function(response) {
+                console.log("AJAX POST:", response);
+                document.getElementById("postOutput").textContent = JSON.stringify(response, null, 2);
+            }
+        });
+    </script>
+    <pre id="postOutput">Sending POST data...</pre>
+</body>
+</html>

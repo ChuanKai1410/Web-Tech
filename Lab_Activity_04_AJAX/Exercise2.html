@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX Exercise 2</title>
+</head>
+<body>
+    <!-- 1.	Display JSON in Console -->
+    <!-- <script>
+        fetch("https://jsonplaceholder.typicode.com/posts/2")
+            .then(response => response.json())
+            .then(data => console.log(data)
+        );
+    </script> -->
+
+    <!-- 2.	Display JSON in pre Tag -->
+    <!-- <pre id="output"></pre>
+    <script>
+        fetch("https://jsonplaceholder.typicode.com/posts/2")
+            .then(response => response.json())
+            .then(data => {document.getElementById("output").textContent = JSON.stringify(data, null, 2);
+        });
+    </script> -->
+
+    <!-- 3.	Convert JSON to HTML Table -->
+    <table id="jsonTable" border="1"></table>
+    <script>
+        fetch("https://jsonplaceholder.typicode.com/posts/2")
+            .then(response => response.json())
+            .then(data => { 
+                const table = document.getElementById("jsonTable");
+                for (let key in data) {
+                    const row = table.insertRow();
+                    const cell1 = row.insertCell(0);
+                    const cell2 = row.insertCell(1);
+                    cell1.innerHTML = key;
+                    cell2.innerHTML = data[key];
+                }
+        });
+    </script>
+</html>
